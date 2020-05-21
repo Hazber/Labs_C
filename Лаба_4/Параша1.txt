@@ -1,0 +1,354 @@
+#include "stdio.h"
+#include "string.h"
+
+struct date {
+	int day;
+	int month;
+	int year;
+};
+
+struct GashishProdyct
+{
+	char name[20];
+	int cost;
+	struct date datanahoi;
+};
+
+int RazborGovna(struct GashishProduct *members)
+{
+	char test, test1,temp;
+	for (int counter = 0; counter <= 4; counter++)
+		for (int counter1 = 0; counter <= 4; counter1++)
+		{
+			test = members[counter].name + 'a' - 'A';
+			test1 = members[counter].name + 'a' - 'A';
+			if (ord(test) > ord(test1))
+			{
+				temp = members[counter];
+				members[counter] = members[counter + 1];
+				members[counter + 1] = temp;
+			}
+		}
+		if ((members[counter].cost > 10000)& (members[counter].date.month > 1))
+		{
+		printf("you date<it '' s cost>1000 and ")
+
+		}
+	}
+}
+
+
+
+void RetardAlert1a(char* str, int len)
+{
+	char output_str[80];
+	int n, fuck;
+	int counter, counter1;
+
+	// fill with gap
+	for (counter = 0; counter <= 2; counter++)
+		output_str[counter] = ' ';
+	counter = 3;
+	fuck = 3;
+
+	//fill with necessary words
+	counter1 = 1;
+
+	while (counter <= len)
+	{
+		while ((counter1 <= fuck) & (counter + counter1 <= len))
+		{
+			output_str[counter + counter1 - 1] = str[counter + counter1 - 1];
+			counter1++;
+		}
+
+		//counter1 = counter;
+		counter1 = 1;
+		if (counter <= len - 16)
+		{
+			while (counter1 <= 13)
+			{
+				output_str[counter + counter1 + 2] = ' ';
+				counter1++;
+			}
+			counter += 16;
+		}
+		else
+		{
+			while (counter + 3 <= len)
+			{
+				output_str[counter + 3] = ' ';
+				counter++;
+			}
+			counter += len;
+		}
+		counter1 = 1;
+
+	}
+
+	//len = counter;
+	//output
+	for (counter = 0; counter <= len; counter++)
+		printf("%c", output_str[counter]);
+
+	printf("\n");
+}
+
+
+void RetardAlert1b(char* str, int len)
+{
+	char output_str[80];
+	int n, fuck;
+	int counter, counter1;
+
+	// fill with gap
+	for (counter = 0; counter <= 10; counter++)
+		output_str[counter] = ' ';
+	counter = 11;
+	fuck = 3;
+
+	//fill with necessary words
+	counter1 = 1;
+
+	while (counter <= len)
+	{
+		while ((counter1 <= fuck) & (counter + counter1 <= len))
+		{
+			output_str[counter + counter1 - 1] = str[counter + counter1 - 1];
+			counter1++;
+		}
+
+		//counter1 = counter;
+		counter1 = 1;
+		if (counter <= len - 16)
+		{
+			while (counter1 <= 13)
+			{
+				output_str[counter + counter1 + 2] = ' ';
+				counter1++;
+			}
+			counter += 16;
+		}
+		else
+		{
+			while (counter + 3 <= len)
+			{
+				output_str[counter + 3] = ' ';
+				counter++;
+			}
+			counter += len;
+		}
+		counter1 = 1;
+
+	}
+
+
+	for (counter = 0; counter <= len; counter++)
+		printf("%c", output_str[counter]);
+
+	printf("\n");
+}
+
+void RetardAlert2a(char* str, int len)
+{
+	char output_str[80];
+	int n, fuck, devider;
+	int counter, counter1;
+
+	// fill with gap
+	output_str[0] = ' ';
+	counter = 1;
+	fuck = 2;
+	devider = 1;
+
+	//fill with necessary words
+	counter1 = 1;
+
+	while (counter <= len)
+	{
+		while ((counter1 <= fuck) & (counter + counter1 <= len))
+		{
+			output_str[counter + counter1 - 1] = str[counter + counter1 - 1];
+			counter1++;
+		}
+
+		//counter1 = counter;
+
+		counter1 = 1;
+		if (counter <= len - 5)
+		{
+			if (devider == 0)
+			{
+				while (counter1 <= 10)
+				{
+					output_str[counter + counter1 + 1] = ' ';
+					counter1++;
+				}
+				counter += 11;
+				devider = 1;
+			}
+			else
+			{
+				while (counter1 <= 5)
+				{
+					output_str[counter1 + counter + 1] = ' ';
+					counter1++;
+				}
+				counter += 5;
+				devider = 0;
+			}
+		}
+		else
+		{
+			while (counter + 2 <= len)
+			{
+				output_str[counter + 2] = ' ';
+				counter++;
+			}
+			counter += len;
+		}
+		counter1 = 1;
+
+	}
+
+
+	for (counter = 0; counter <= len; counter++)
+		printf("%c", output_str[counter]);
+
+	printf("\n");
+}
+
+void RetardAlert2b(char* str, int len)
+{
+	char output_str[80];
+	int n, fuck, devider;
+	int counter, counter1;
+
+	// fill with gap
+	for (counter = 0; counter <= 8; counter++)
+		output_str[counter] = ' ';
+	counter = 9;
+	fuck = 2;
+	devider = 1;
+
+	//fill with necessary words
+	counter1 = 1;
+
+	while (counter <= len)
+	{
+		while ((counter1 <= fuck) & (counter + counter1 <= len))
+		{
+			output_str[counter + counter1 - 1] = str[counter + counter1 - 1];
+			counter1++;
+		}
+
+		//counter1 = counter;
+
+		counter1 = 1;
+		if (counter <= len - 5)
+		{
+			if (devider == 0)
+			{
+				while (counter1 <= 10)
+				{
+					output_str[counter + counter1 + 1] = ' ';
+					counter1++;
+				}
+				counter += 11;
+				devider = 1;
+			}
+			else
+			{
+				while (counter1 <= 5)
+				{
+					output_str[counter1 + counter + 1] = ' ';
+					counter1++;
+				}
+				counter += 5;
+				devider = 0;
+			}
+		}
+		else
+		{
+			while (counter + 2 <= len)
+			{
+				output_str[counter + 2] = ' ';
+				counter++;
+			}
+			counter += len;
+		}
+		counter1 = 1;
+
+	}
+
+
+	for (counter = 0; counter <= len; counter++)
+		printf("%c", output_str[counter]);
+
+	printf("\n");
+}
+
+
+void RetardAlert3a(char* str, int len)
+{
+	char output_str[80];
+	int counter, counter1;
+
+	// fill with gap
+	counter = 0;
+
+	//fill with necessary words
+	counter1 = 1;
+
+	while (counter <= len)
+	{
+		output_str[counter] = str[counter];
+		if (counter <= len - 8)
+		{
+
+			while (counter1 <= 8)
+			{
+				output_str[counter + counter1] = ' ';
+				counter1++;
+			}
+			counter += 8;
+
+		}
+		else
+		{
+			while (counter + 1 <= len)
+			{
+				output_str[counter + 1] = ' ';
+				counter++;
+			}
+			counter += len;
+		}
+		counter1 = 1;
+
+	}
+
+
+	for (counter = 0; counter <= len; counter++)
+		printf("%c", output_str[counter]);
+
+	printf("\n");
+}
+
+
+void main(void)
+{
+	char Mass_huias[80];
+	int lenstr;
+	printf("Input your string: \n");
+	gets(Mass_huias);
+	lenstr = strlen(Mass_huias);
+	printf("Your result: \n");
+
+	RetardAlert1a(Mass_huias, lenstr);
+	RetardAlert2a(Mass_huias, lenstr);
+	RetardAlert3a(Mass_huias, lenstr);
+	RetardAlert2b(Mass_huias, lenstr);
+	RetardAlert1b(Mass_huias, lenstr);
+	getchar();
+
+}

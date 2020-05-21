@@ -1,0 +1,26 @@
+#include "GandonProtection.h"
+#include "SosKa.h"
+void RazborGovna(struct GashishProduct* members) 
+{
+char test, test1;
+struct GashishProduct temp;
+for (int counter = 0; counter <= 4; counter++)
+{
+	for (int counter1 = 0; counter1 < 4; counter1++)
+	{
+		test = tolower(members[counter1].name);
+		test1 = tolower(members[counter1+1].name);
+		if ((test) > (test1))
+		{
+			temp = members[counter];
+			members[counter] = members[counter + 1];
+			members[counter + 1] = temp;
+		}
+	}
+	if ((members[counter].cost > 10000) & (members[counter].datanahoi.month > 1))
+	{
+		printf("it cost too much for you and it has long gone bad\n ");
+		printf("Name:%s\nCost:%d\nMonth:%d\n", members[counter].name, members[counter].cost, members[counter].datanahoi.month);
+	}
+}
+}

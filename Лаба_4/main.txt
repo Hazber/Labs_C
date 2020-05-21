@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include "SosKa.h"
+#define  scan_my_dick scanf_s 
+
+
+void main(void)
+{
+	struct GashishProduct mass_huias[5];
+
+	printf("Input your datashit\n");
+	for (int counter = 0; counter <= 4; counter++)
+	{
+		printf("input name: \n");
+		gets(mass_huias[counter].name);
+		printf("input cost: \n");
+		scan_my_dick("%d", &mass_huias[counter].cost);
+		printf("input date(XX): \n");
+		scan_my_dick("%d", &mass_huias[counter].datanahoi.day);
+		printf("input month(YY): \n");
+		scan_my_dick("%d", &mass_huias[counter].datanahoi.month);
+		printf("input year(ZZZZ): \n");
+		scan_my_dick("%d", &mass_huias[counter].datanahoi.year);
+		getchar();
+	}
+	RazborGovna(mass_huias);
+	
+	getchar;
+
+
+}

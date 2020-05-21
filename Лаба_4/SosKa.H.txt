@@ -1,0 +1,12 @@
+#ifndef h_SosKa
+#define h_SosKa
+#include "stdio.h"
+#include "GandonProtection.h"
+
+
+void RazborGovna(struct GashishProduct* members);
+#endif
+
+
+
+

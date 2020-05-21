@@ -1,0 +1,34 @@
+#include "stdio.h"
+#include "string.h"
+void main()
+{
+	char Mass_huias[80];
+	int len_counter, counter, length, max_len, position;
+	printf("Input your string: \n");
+	gets(Mass_huias);
+	length = strlen(Mass_huias);
+	counter = 0;
+	len_counter = max_len = position = 0;
+	while (counter <= (length - 1))
+	{
+		if (Mass_huias[counter] != ' ')
+
+		{
+			len_counter++;
+			if (len_counter > max_len)
+			{
+				max_len = len_counter;
+				position = counter;
+			}
+		}
+		else
+			len_counter = 0;
+
+		counter++;
+	}
+	printf("Largest word: \n");
+	for (counter = 1; counter <= max_len; counter++)
+		printf("%c", Mass_huias[position - max_len + counter]);
+	getchar();
+
+}

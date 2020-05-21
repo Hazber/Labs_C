@@ -1,0 +1,37 @@
+#include "stdio.h"
+#include "string.h"
+void main()
+{
+	char Mass_huias[80],big_boss_word[80], temp;
+	int len_counter, counter, length, max_len,position_huishon;
+	printf("Input your string: \n");
+	gets(Mass_huias);
+	length = strlen(Mass_huias);
+	counter = 0;
+	len_counter = max_len=position_huishon = 0;
+	while (counter <= (length - 1))
+	{
+		if (Mass_huias[counter] != ' ')
+
+		{
+			len_counter++;
+			if (len_counter > max_len)
+			{
+				max_len = len_counter;
+				position_huishon = counter;
+			}
+		}
+			else
+				len_counter = 0;
+		
+
+		counter++;
+	}
+	for (counter = 1; counter <= max_len; counter++)
+		big_boss_word += Mass_huias[position_huishon - max_len + counter];
+	printf("Result: \n%d", max_len);
+	puts(big_boss_word);
+
+	getchar();
+
+}

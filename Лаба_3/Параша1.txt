@@ -1,0 +1,22 @@
+#include "stdio.h"
+#include "string.h"
+void main()
+{
+	char Mass_huias[5],temp;
+	int counter,length;
+    gets(Mass_huias);
+	length = strlen(Mass_huias);
+	counter = 0;
+	while (counter <= (length-1))
+	{
+		temp = Mass_huias[counter];
+		Mass_huias[counter] = Mass_huias[counter + 1];
+		Mass_huias[counter + 1] = temp;
+		counter++;
+	}
+
+	puts(Mass_huias);
+
+	getchar();
+
+}

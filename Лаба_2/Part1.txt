@@ -1,0 +1,61 @@
+#include "stdio.h"
+void main()
+{
+	srand(time(NULL));
+	int mass_huias[4][4];
+	//int temp_mass[4] = { 0 };
+	int strings, columns,temp, max_element, max_column, max_string;
+	max_column = max_string = columns = strings = temp=0;
+
+	for (strings = 0; strings <= 3; strings++)
+		for (columns = 0; columns <= 3; columns++)
+			mass_huias[strings][columns] = 1 + rand() % 100;
+
+	for (strings = 0; strings <= 3; strings++)
+	{
+		for (columns = 0; columns <= 3; columns++)
+			printf("%2d ", mass_huias[strings][columns]);
+		printf("\n");
+	}
+
+	max_element = mass_huias[0][0];
+
+	for (strings = 0; strings <= 3; strings++)
+		for (columns = 0; columns <= 3; columns++)
+		{
+			if (mass_huias[strings][columns] > max_element)
+			{
+				max_element = mass_huias[strings][columns];
+				max_string = strings;
+				max_column = columns;
+			}
+		}
+
+	for (columns = 0; columns <= 3; columns++)
+	{
+		temp = mass_huias[0][columns];
+		mass_huias[0][columns] = mass_huias[max_string][columns];
+		mass_huias[max_string][columns] = temp;
+	}
+
+	for (strings = 0; strings <= 3; strings++)
+	{
+		temp = mass_huias[strings][0];
+		mass_huias[strings][0] = mass_huias[strings][max_column];
+		mass_huias[strings][max_column] = temp;
+	}
+
+	printf("\n");
+
+	for (strings = 0; strings <= 3; strings++)
+	{
+		for (columns = 0; columns <= 3; columns++)
+			printf("%3d ", mass_huias[strings][columns]);
+		printf("\n");
+	}
+
+
+
+	getchar();
+
+}

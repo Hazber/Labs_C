@@ -1,0 +1,66 @@
+#include "stdio.h"
+void main()
+{
+	srand(time(NULL));
+	int mass_huias[4][4];
+	int strings, n, mass_summ, columns, max_element, max_column, max_string, counter;
+	max_column = max_string = columns = strings = 0;
+
+	for (strings = 0; strings <= 3; strings++)
+		for (columns = 0; columns <= 3; columns++)
+			mass_huias[strings][columns] = 1 + rand() % 10;
+
+	for (strings = 0; strings <= 3; strings++)
+	{
+		for (columns = 0; columns <= 3; columns++)
+			printf("%2d ", mass_huias[strings][columns]);
+		printf("\n");
+	}
+
+	max_element = mass_huias[0][0];
+	for (strings = 0; strings <= 3; strings++)
+		for (columns = 0; columns <= 3; columns++)
+		{
+			if (mass_huias[strings][columns] > max_element)
+			{
+				max_element = mass_huias[strings][columns];
+				max_string = strings;
+				max_column = columns;
+			}
+		}
+
+	mass_summ = 0;
+	columns = strings = 3;
+	if (max_column <= columns - max_string - 1)
+	{
+		n = 2;
+		counter = 0;
+		for (strings = 0; strings <= 2; strings++)
+		{
+			counter = 0;
+			while (counter <= n)
+			{
+				mass_summ += mass_huias[strings][columns - counter];
+				counter++;
+			}
+			n--;
+		}
+	}
+	else
+	{
+		n = 0;
+		for (strings = 0; strings <= 3; strings++)
+		{
+			counter = 0;
+			while (counter <= n)
+			{
+				mass_summ += mass_huias[strings][columns - counter];
+				counter++;
+			}
+			n++;
+		}
+	}
+
+	printf("Summ of elements=\n%d", mass_summ);
+	getchar();
+}

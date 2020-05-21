@@ -1,0 +1,17 @@
+#ifndef h_GandonProtection
+#define h_GandonProtection
+
+struct date {
+	int day;
+	int month;
+	int year;
+};
+
+struct GashishProduct
+{
+	char name[20];
+	int cost;
+	struct date datanahoi;
+};
+
+#endif

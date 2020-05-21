@@ -1,0 +1,57 @@
+#include "stdio.h"
+void main()
+{
+	srand(time(NULL));
+	int mass_huias[4][4];
+	int strings, columns, min_element, min_column, min_string=0;
+	
+
+	for (strings = 0; strings <= 3; strings++)
+		for (columns = 0; columns <= 3; columns++)
+			mass_huias[strings][columns] = 1 + rand() % 100;
+
+	for (strings = 0; strings <= 3; strings++)
+	{
+		for (columns = 0; columns <= 3; columns++)
+			printf("%2d ", mass_huias[strings][columns]);
+		printf("\n");
+	}
+	printf("\n");
+
+	min_element = mass_huias[0][0];
+	for (strings = 0; strings <= 3; strings++)
+	{
+		for (columns = 0; columns <= 3; columns++)
+		{
+			if (mass_huias[strings][columns] < min_element)
+			{
+				min_element = mass_huias[strings][columns];
+				min_string = strings;
+				min_column = columns;
+			}
+		}
+	}
+
+	for (strings = 0; strings <= 3; strings++)
+	{
+		if (strings != min_string)
+		for (columns = 0; columns <= 3; columns++)
+		{
+			if (columns != min_column)
+				printf("%2d ", mass_huias[strings][columns]);
+			else
+				printf("  ");
+
+			
+		}
+		printf("\n");
+
+	}
+
+	printf("\n");
+
+
+
+	getchar();
+
+}
