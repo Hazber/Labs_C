@@ -1,0 +1,195 @@
+#include "stdio.h"
+#include "string.h"
+
+
+FILE* Fileone, * Filetwo, * Result;
+//char datastr[20];
+char datastr[20];
+int size1 = 0;
+int size2 = 0;
+char name1[] = "D:\\Лабы Си\\Лаба_5\\text_one.txt";
+char name2[] = "D:\\Лабы Си\\Лаба_5\\text_two.txt";
+char name3[] = "D:\\Лабы Си\\Лаба_5\\result.txt";
+int counter = 0;
+int counter1 = 0;
+
+struct list
+{
+	char field[20]; // поле данных
+	struct list* ptr; // указатель на следующий элемент
+};
+
+int GetFileSize(FILE* file)
+{
+	fseek(Fileone, 0, SEEK_END); // seek to end of file
+	int size = ftell(Fileone); // get current file pointer
+	fseek(Fileone, 0, SEEK_SET); // seek back to beginning of file
+	// proceed with allocating memory and reading the file
+	return size;
+
+}
+
+struct list* addelem(struct list* lst, char number[20])
+{
+	struct list* temp, * p;
+	temp = (struct list*)malloc(sizeof(struct list));
+	p = lst->ptr; // сохранение указателя на следующий узел
+	lst->ptr = temp; // предыдущий узел указывает на создаваемый
+	strcpy_s(temp->field, 20, number); // сохранение поля данных добавляемого узла
+	temp->ptr = p; // созданный узел указывает на следующий элемент
+	return(temp);
+}
+
+void listprint(struct list* lst, FILE* zaebalo)
+{
+	struct list* p;
+	p = lst;
+	char* next_token1 = NULL;
+	do {
+		strtok_s(p->field, "\n",&next_token1);
+		fprintf(zaebalo, "%s\n",(p->field));
+		//fputs(p->field, zaebalo);// вывод значения элемента p
+		//fputs("\n",zaebalo)
+		p = p->ptr; // переход к следующему узлу
+	} while (p != NULL);
+}
+
+
+struct list* init(char a[20]) // а- значение первого узла
+{
+	struct list* lst;
+	// выделение памяти под корень списка
+	lst = (struct list*)malloc(sizeof(struct list));
+	strcpy_s(lst->field, 20, a);
+	lst->ptr = NULL; // это последний узел списка
+	return(lst);
+}
+
+struct list* swap(struct list* lst1, struct list* lst2,struct list* head)
+{
+	// Возвращает новый корень списка
+	char temp[20];
+
+	struct list* prev1, * prev2, * next1, * next2;
+	prev1 = head;
+	prev2 = head;
+	if (prev1 == lst1)
+		prev1 = NULL;
+	else
+		while (prev1->ptr != lst1) // поиск узла предшествующего lst1
+			prev1 = prev1->ptr;
+	if (prev2 == lst2)
+		prev2 = NULL;
+	else
+		while (prev2->ptr != lst2) // поиск узла предшествующего lst2
+			prev2 = prev2->ptr;
+	next1 = lst1->ptr;  // узел следующий за lst1
+	next2 = lst2->ptr;  // узел следующий за lst2
+	if (lst2 == next1)
+	{                       // обмениваются соседние узлы
+		lst2->ptr = lst1;
+		lst1->ptr = next2;
+		if (lst1 != head)
+			prev1->ptr = lst2;
+	}
+	else
+		if (lst1 == next2)
+		{
+			// обмениваются соседние узлы
+			lst1->ptr = lst2;
+			lst2->ptr = next1;
+			if (lst2 != head)
+				prev2->ptr = lst2;
+		}
+		else
+		{
+			// обмениваются отстоящие узлы
+			if (lst1 != head)
+				prev1->ptr = lst2;
+			lst2->ptr = next1;
+			if (lst2 != head)
+				prev2->ptr = lst1;
+			lst1->ptr = next2;
+		}
+	if (lst1 == head)
+		return(lst2);
+	if (lst2 == head)
+		return(lst1);
+	return(head);
+}
+
+void CMP_and_SWAP(struct list* elementforswap, struct list *head)
+{
+	struct list* nextforswap1, * nextforswap2;
+
+	if (elementforswap->field[0] > elementforswap->ptr->field[0])
+	{
+		nextforswap1 = elementforswap;
+		nextforswap2 = elementforswap->ptr;
+		head = swap(nextforswap1, nextforswap2, head);
+	}
+}
+
+
+
+void main(void)
+
+{
+	struct list* Baska, * next, * next_next, * nextforswap1, * nextforswap2, * nextBaska;
+	
+
+	fopen_s(&Fileone, name1, "r");
+	fopen_s(&Filetwo, name2, "r");
+	fopen_s(&Result, name3, "w");
+	Baska = init("Motherfucker");
+	next = Baska;
+	while (!(feof(Fileone)))
+	{
+	//	fscanf_s(Fileone, "%s\n",20, datastr);
+		fgets(datastr, 20, Fileone);
+        
+		next = addelem(next, datastr);
+		//next = next->ptr;
+		counter++;
+	}
+
+
+	while (!(feof(Filetwo)))
+	{
+		//fscanf_s(Filetwo, "%s\n",20, datastr);
+		fgets(datastr, 20, Filetwo);
+		if (!(datastr[0]>='1'&datastr[0]<='9'))
+			next = addelem(next, datastr);
+		//next = next->ptr;
+		counter++;
+	}
+	//next->ptr = NULL;
+	next = Baska;
+	next_next = Baska;
+	counter1=counter;
+
+
+	while ((next->ptr != NULL))
+	{
+		next_next = Baska;
+		while (next_next->ptr != NULL)
+		{
+				if (toupper(next_next->field[0]) > toupper(next_next->ptr->field[0]))
+				{
+					nextforswap1 = next_next;
+					nextforswap2 = next_next->ptr;
+					Baska=swap(nextforswap1, nextforswap2,Baska);
+				}
+			next_next = next_next->ptr;
+		}
+		next = next->ptr;
+		counter--;
+	}
+
+	listprint(Baska, Result);
+	fclose(Result);
+	fclose(Filetwo);
+	fclose(Fileone);
+	getchar();
+
+}
