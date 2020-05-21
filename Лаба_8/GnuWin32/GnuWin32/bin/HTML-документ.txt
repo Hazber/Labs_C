@@ -1,0 +1,10 @@
+<!doctype HTML public"-//W3C//Dtd HTML 4.0 Frameset // EN"
+   "http://www.w3.org/tr/REC-html40/frameset.dtd">
+<html>
+  <head>
+   <title>Самый простой HTML-документ</title>
+  </head>
+  <body>
+    Проще не бывает
+  </body>
+</html>

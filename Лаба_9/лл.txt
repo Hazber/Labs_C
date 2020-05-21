@@ -1,0 +1,83 @@
+#include <stdio.h>
+#include <string.h>
+typedef enum { ctUnKnown = 0,
+	ctDol,
+	ctNul,
+	ctX,
+	ctLetter,
+	ctNumber } TMyType;
+typedef int TState;
+const TState Transitions[6][6] = { { 0, 0, 0, 0, 0, 0 }, 
+								   { 0, 2, 3, 0, 0, 0 }, 
+								   { 0, 0, 5, 0, 5, 5 },
+							       { 0, 0, 0, 4, 0, 0 },
+								   { 0, 0, 5, 0, 5, 5 }, 
+						           { 0, 0, 5, 0, 5, 5 } };
+char str[100];
+short check;
+
+TMyType GetCharType(char c) {
+	if (c >= '1' && c <= '9') {
+		return ctNumber;
+	}
+	else if ((c >= 'A' && c <= 'F') || (c >= 'a' && c <= 'f')) {
+		return ctLetter;
+	}
+	else if (c == '0') {
+		return ctNul;
+	}
+	else if (c == 'x') {
+		return ctX;
+	}
+	else if (c == '$') {
+		return ctDol;
+	}
+	else {
+		return ctUnKnown;
+	}
+}
+
+int CheckString(char str[100]) {
+	TState State = 1;
+	int j = 0, pos = 0, kol = 0;
+	int res = 1;
+	char s[100];
+	check = 0;
+	for (int i = 0; i < strlen(str); i++) {
+		State = Transitions[State][GetCharType(str[i])];
+		check = State;
+		if (State != 0) {
+			s[j] = str[i];
+			if (State == 5)
+				pos = i;
+			j++;
+			kol++;
+			s[kol] = 0;
+		}
+		else {
+			i = pos;
+			pos++;
+			res = 0;
+			j = 0;
+			kol = 0;
+			s[0] = 0;
+			State = 1;
+		}
+		if (State == 5)
+			printf("Correct string: %s\n", s);
+	}
+	printf("\n");
+	//return State;
+	return res;
+}
+
+void main(void) {
+	printf("Enter your string\n");
+	gets_s(str, 100);
+	if ((CheckString(str) < 1) | (check < 5)) {
+		printf("Incorrect string\n");
+	}
+	else {
+		printf("Good boy!");
+	}
+}
