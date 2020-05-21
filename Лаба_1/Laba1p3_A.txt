@@ -1,0 +1,18 @@
+#include "stdio.h"
+void main()
+{
+	int mas[10];
+	int counter,eps;
+	for (counter = 0; counter <= 9; counter++)
+	{
+		scanf_s("%d", &mas[counter]);
+		eps = mas[counter]%2;
+		if (!eps)
+		{
+			if ((((mas[counter] / 2) % 2) > 0) )
+				printf("Your number is:\n%d", mas[counter]);
+		}
+	}
+	getchar();
+
+}

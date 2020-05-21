@@ -1,0 +1,14 @@
+#include "stdio.h"
+
+int umnozenie(int x, int n)
+{
+	if (n == 0) return 1;
+	if (n < 0) return umnozenie(1.0 / x, -n);
+	return x* umnozenie(x, n - 1);
+}
+void main()
+{
+	int x, n;
+	while (scanf_s("%d %d, &x, &n) == 2)
+		printf("%d\n",umnozenie(x,n));
+}

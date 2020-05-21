@@ -1,0 +1,12 @@
+#include "stdio.h"
+void main()
+{
+	int n, counter,x,result;
+	scanf("%d", &x);
+	scanf("%d", &n);
+	result = 1;
+	for (counter = 1; counter <= n; counter++)
+		result *= x;
+	printf("%d", result);
+	getchar();
+}

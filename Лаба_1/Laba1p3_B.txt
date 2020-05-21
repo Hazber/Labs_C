@@ -1,0 +1,20 @@
+#include "stdio.h"
+void main()
+{
+	int mas[10];
+	int counter;
+	for (counter = 0; counter <= 9; counter++)
+	{
+		scanf_s("%d",&mas[counter]);
+		switch (mas[counter] % 7)
+		{
+		case 1:
+			printf("Your number is:\n%d", mas[counter]); break;
+		case 2:
+			printf("Your number is:\n%d", mas[counter]); break;
+		case 5:
+			printf("Your number is:\n%d", mas[counter]); break;
+		}
+	}
+	getchar();
+}

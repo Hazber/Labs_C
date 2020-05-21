@@ -1,0 +1,30 @@
+#include "stdio.h"
+//#include "time.h"
+void main()
+{
+	int n, m,counter;
+	float result, resultik, resultik1, resultik3;
+	resultik = resultik1 = resultik3 =result=1.0 ;
+	
+	result = 1.0;
+	printf("Input n: \n");
+	scanf_s("%d",&n);
+	printf("Input m: \n");
+	scanf_s("%d", &m);
+	if (n && m > 0)
+	{
+		for (counter = 1; counter <= n; counter++)
+			resultik *= counter;
+		for (counter = 1; counter <= m; counter++)
+			resultik1 *= counter;
+		for (counter = 1; counter <= (n + m); counter++)
+			resultik3 *= counter;
+		result = (resultik + resultik1) / resultik3;
+		printf("%f", result);
+	}
+	else
+		printf("Wrong data");
+	
+	getchar();
+
+}
